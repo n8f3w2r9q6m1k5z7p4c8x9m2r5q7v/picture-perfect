@@ -26,26 +26,30 @@ async function proxyFetch(url: string): Promise<string> {
 
 async function fetchAppIds(): Promise<number[]> {
   const text = await proxyFetch(`${BASE_API}/apps.txt`);
-  const maxId = parseInt(text.trim(), 10);
-  if (isNaN(maxId) || maxId < 1) throw new Error("Invalid app count");
-  return Array.from({ length: maxId }, (_, i) => i + 1);
+  // Parse all IDs from apps.txt (format: 1\n2\n3\n4\n5\n6 or just "6" for count)
+  const lines = text.trim().split('\n').filter(line => line.trim());
+  
+  // If it's a single number, treat as max count
+  if (lines.length === 1 && !isNaN(parseInt(lines[0]))) {
+    const maxId = parseInt(lines[0]);
+    return Array.from({ length: maxId }, (_, i) => i + 1);
+  }
+  
+  // Otherwise parse each line as an ID
+  return lines.map(line => parseInt(line.trim())).filter(id => !isNaN(id));
 }
 
 async function fetchAppDetails(id: number): Promise<App | null> {
   try {
     const text = await proxyFetch(`${BASE_API}/api.php?id=${id}`);
     
-    // Try to parse as JSON
     let data;
     try {
       data = JSON.parse(text);
     } catch {
-      // Not valid JSON, skip this app
-      console.log(`App ${id} returned invalid JSON:`, text.substring(0, 50));
       return null;
     }
     
-    // Must have name to be valid
     if (!data.name || typeof data.name !== 'string') {
       return null;
     }
@@ -56,15 +60,14 @@ async function fetchAppDetails(id: number): Promise<App | null> {
       image: data.image || "",
       install: data.install || "",
     };
-  } catch (error) {
-    console.warn(`Error fetching app ${id}:`, error);
+  } catch {
     return null;
   }
 }
 
 export function useApps() {
   return useQuery({
-    queryKey: ["naruto-apps"],
+    queryKey: ["naruto-apps-v2"],
     queryFn: async () => {
       const ids = await fetchAppIds();
       const results = await Promise.all(ids.map(fetchAppDetails));
@@ -77,6 +80,6 @@ export function useApps() {
       return apps;
     },
     staleTime: 1000 * 60 * 5,
-    retry: 1,
+    retry: 2,
   });
 }
