@@ -57,6 +57,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        icon: {
+          DEFAULT: "hsl(var(--icon-bg))",
+          foreground: "hsl(var(--icon-fg))",
+        },
+        install: {
+          DEFAULT: "hsl(var(--install-bg))",
+          foreground: "hsl(var(--install-fg))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
