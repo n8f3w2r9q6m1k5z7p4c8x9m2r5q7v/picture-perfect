@@ -104,6 +104,7 @@ const Index = () => {
                   key={app.id}
                   name={app.name}
                   image={app.image}
+                  description={app.description}
                   installUrl={app.install}
                   onInstall={() => handleInstall(app)}
                 />

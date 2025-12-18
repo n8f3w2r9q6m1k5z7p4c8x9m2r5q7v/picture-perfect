@@ -5,6 +5,7 @@ export interface App {
   name: string;
   image: string;
   install: string;
+  description: string;
 }
 
 const BASE_API = "https://narutodevapis.serv00.net";
@@ -59,6 +60,7 @@ async function fetchAppDetails(id: number): Promise<App | null> {
       name: data.name,
       image: data.image || "",
       install: data.install || "",
+      description: data.description || "",
     };
   } catch {
     return null;
