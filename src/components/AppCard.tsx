@@ -3,25 +3,29 @@ import { Button } from "@/components/ui/button";
 
 interface AppCardProps {
   name: string;
-  iconUrl?: string | null;
-  downloadUrl?: string | null;
+  image?: string;
+  installUrl?: string;
   onInstall: () => void;
 }
 
-export function AppCard({ name, iconUrl, onInstall }: AppCardProps) {
+export function AppCard({ name, image, onInstall }: AppCardProps) {
   return (
-    <div className="flex flex-col items-center gap-3 rounded-xl bg-card p-4 transition-transform hover:scale-105">
-      <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-icon">
-        {iconUrl ? (
-          <img src={iconUrl} alt={name} className="h-12 w-12 object-contain" />
+    <div className="group flex flex-col items-center gap-4 rounded-2xl bg-card p-5 border border-border/50 transition-all duration-300 hover:border-primary/50 hover:glow-sm">
+      <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-icon overflow-hidden">
+        {image ? (
+          <img 
+            src={image} 
+            alt={name} 
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" 
+          />
         ) : (
           <Download className="h-10 w-10 text-icon-foreground" />
         )}
       </div>
-      <span className="text-sm font-medium text-card-foreground">{name}</span>
+      <span className="text-sm font-medium text-card-foreground text-center line-clamp-2">{name}</span>
       <Button
         onClick={onInstall}
-        className="w-full bg-install text-install-foreground hover:bg-install/90 font-semibold"
+        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold transition-all duration-300 hover:glow-sm"
         size="sm"
       >
         Install
