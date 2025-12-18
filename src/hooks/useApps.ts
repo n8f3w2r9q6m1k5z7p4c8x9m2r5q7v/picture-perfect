@@ -1,28 +1,37 @@
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
 
 export interface App {
-  id: string;
+  id: number;
   name: string;
-  description: string | null;
-  icon_url: string | null;
-  download_url: string | null;
-  download_count: number | null;
-  created_at: string;
-  updated_at: string;
+  image: string;
+  install: string;
+}
+
+async function fetchAppIds(): Promise<number[]> {
+  const response = await fetch("https://narutodevapis.serv00.net/apps.txt");
+  const text = await response.text();
+  const maxId = parseInt(text.trim(), 10);
+  return Array.from({ length: maxId }, (_, i) => i + 1);
+}
+
+async function fetchAppDetails(id: number): Promise<App> {
+  const response = await fetch(`https://narutodevapis.serv00.net/api.php?id=${id}`);
+  const data = await response.json();
+  return {
+    id,
+    name: data.name,
+    image: data.image,
+    install: data.install,
+  };
 }
 
 export function useApps() {
   return useQuery({
     queryKey: ["apps"],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("apps")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-      if (error) throw error;
-      return data as App[];
+      const ids = await fetchAppIds();
+      const apps = await Promise.all(ids.map(fetchAppDetails));
+      return apps;
     },
   });
 }
