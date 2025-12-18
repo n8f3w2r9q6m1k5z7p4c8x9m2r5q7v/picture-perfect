@@ -4,92 +4,92 @@
 
 @layer base {
   :root {
-    --background: 270 50% 12%;
-    --foreground: 0 0% 95%;
+    --background: 270 30% 98%;
+    --foreground: 270 50% 15%;
 
-    --card: 270 40% 18%;
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 270 50% 15%;
 
-    --popover: 270 40% 15%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 50% 15%;
 
-    --primary: 270 70% 60%;
+    --primary: 270 60% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 270 30% 25%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 270 30% 94%;
+    --secondary-foreground: 270 50% 25%;
 
-    --muted: 270 30% 22%;
-    --muted-foreground: 270 20% 65%;
+    --muted: 270 20% 95%;
+    --muted-foreground: 270 20% 45%;
 
-    --accent: 270 70% 60%;
+    --accent: 270 60% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 270 30% 28%;
-    --input: 270 30% 22%;
-    --ring: 270 70% 60%;
+    --border: 270 20% 90%;
+    --input: 270 20% 92%;
+    --ring: 270 60% 55%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    --sidebar-background: 270 50% 10%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 270 70% 60%;
+    --sidebar-background: 270 30% 96%;
+    --sidebar-foreground: 270 50% 15%;
+    --sidebar-primary: 270 60% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 40% 18%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 270 30% 22%;
-    --sidebar-ring: 270 70% 60%;
+    --sidebar-accent: 270 30% 92%;
+    --sidebar-accent-foreground: 270 50% 15%;
+    --sidebar-border: 270 20% 88%;
+    --sidebar-ring: 270 60% 55%;
 
-    --icon-bg: 270 30% 25%;
-    --icon-fg: 270 70% 70%;
-    --install-bg: 270 70% 60%;
+    --icon-bg: 270 40% 95%;
+    --icon-fg: 270 60% 55%;
+    --install-bg: 270 60% 55%;
     --install-fg: 0 0% 100%;
   }
 
   .dark {
-    --background: 270 50% 8%;
+    --background: 270 30% 8%;
     --foreground: 0 0% 95%;
 
-    --card: 270 40% 14%;
+    --card: 270 30% 12%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 270 40% 10%;
+    --popover: 270 30% 10%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 270 70% 60%;
+    --primary: 270 60% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 270 30% 20%;
+    --secondary: 270 25% 18%;
     --secondary-foreground: 0 0% 95%;
 
-    --muted: 270 30% 16%;
-    --muted-foreground: 270 20% 55%;
+    --muted: 270 20% 15%;
+    --muted-foreground: 270 15% 60%;
 
-    --accent: 270 70% 60%;
+    --accent: 270 60% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 270 30% 24%;
-    --input: 270 30% 16%;
-    --ring: 270 70% 60%;
+    --border: 270 20% 20%;
+    --input: 270 20% 15%;
+    --ring: 270 60% 60%;
 
-    --sidebar-background: 270 50% 6%;
+    --sidebar-background: 270 30% 6%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 270 70% 60%;
+    --sidebar-primary: 270 60% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 40% 14%;
+    --sidebar-accent: 270 30% 12%;
     --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 270 30% 18%;
-    --sidebar-ring: 270 70% 60%;
+    --sidebar-border: 270 20% 18%;
+    --sidebar-ring: 270 60% 60%;
 
-    --icon-bg: 270 30% 20%;
-    --icon-fg: 270 70% 70%;
-    --install-bg: 270 70% 60%;
+    --icon-bg: 270 30% 18%;
+    --icon-fg: 270 60% 70%;
+    --install-bg: 270 60% 60%;
     --install-fg: 0 0% 100%;
   }
 }
@@ -101,15 +101,22 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 }
 
 @layer utilities {
-  .glow {
-    box-shadow: 0 0 20px hsl(270 70% 60% / 0.3);
+  .glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
   
-  .glow-sm {
-    box-shadow: 0 0 10px hsl(270 70% 60% / 0.2);
+  .shadow-soft {
+    box-shadow: 0 4px 24px -4px hsl(270 60% 55% / 0.15);
+  }
+  
+  .shadow-hover {
+    box-shadow: 0 8px 32px -4px hsl(270 60% 55% / 0.25);
   }
 }
