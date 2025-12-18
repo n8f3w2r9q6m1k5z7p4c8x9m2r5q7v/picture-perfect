@@ -1,96 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 270 30% 98%;
-    --foreground: 270 50% 15%;
+    --background: 240 15% 6%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 270 50% 15%;
+    --card: 240 15% 9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 270 50% 15%;
+    --popover: 240 15% 8%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 270 60% 55%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 175 85% 50%;
+    --primary-foreground: 240 15% 6%;
 
-    --secondary: 270 30% 94%;
-    --secondary-foreground: 270 50% 25%;
+    --secondary: 280 80% 60%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 270 20% 95%;
-    --muted-foreground: 270 20% 45%;
+    --muted: 240 15% 15%;
+    --muted-foreground: 240 10% 55%;
 
-    --accent: 270 60% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 320 85% 60%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 270 20% 90%;
-    --input: 270 20% 92%;
-    --ring: 270 60% 55%;
+    --border: 240 15% 18%;
+    --input: 240 15% 12%;
+    --ring: 175 85% 50%;
 
     --radius: 1rem;
 
-    --sidebar-background: 270 30% 96%;
-    --sidebar-foreground: 270 50% 15%;
-    --sidebar-primary: 270 60% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 30% 92%;
-    --sidebar-accent-foreground: 270 50% 15%;
-    --sidebar-border: 270 20% 88%;
-    --sidebar-ring: 270 60% 55%;
+    --sidebar-background: 240 15% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 175 85% 50%;
+    --sidebar-primary-foreground: 240 15% 6%;
+    --sidebar-accent: 240 15% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 15% 18%;
+    --sidebar-ring: 175 85% 50%;
 
-    --icon-bg: 270 40% 95%;
-    --icon-fg: 270 60% 55%;
-    --install-bg: 270 60% 55%;
-    --install-fg: 0 0% 100%;
+    --icon-bg: 240 15% 12%;
+    --icon-fg: 175 85% 50%;
+    --install-bg: 175 85% 50%;
+    --install-fg: 240 15% 6%;
+    
+    --glow-primary: 175 85% 50%;
+    --glow-secondary: 280 80% 60%;
+    --glow-accent: 320 85% 60%;
   }
 
   .dark {
-    --background: 270 30% 8%;
-    --foreground: 0 0% 95%;
-
-    --card: 270 30% 12%;
-    --card-foreground: 0 0% 95%;
-
-    --popover: 270 30% 10%;
-    --popover-foreground: 0 0% 95%;
-
-    --primary: 270 60% 60%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 270 25% 18%;
-    --secondary-foreground: 0 0% 95%;
-
-    --muted: 270 20% 15%;
-    --muted-foreground: 270 15% 60%;
-
-    --accent: 270 60% 60%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 270 20% 20%;
-    --input: 270 20% 15%;
-    --ring: 270 60% 60%;
-
-    --sidebar-background: 270 30% 6%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 270 60% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 30% 12%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 270 20% 18%;
-    --sidebar-ring: 270 60% 60%;
-
-    --icon-bg: 270 30% 18%;
-    --icon-fg: 270 60% 70%;
-    --install-bg: 270 60% 60%;
-    --install-fg: 0 0% 100%;
+    --background: 240 15% 6%;
+    --foreground: 0 0% 98%;
   }
 }
 
@@ -101,22 +68,95 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
   }
 }
 
 @layer utilities {
   .glass {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(15, 15, 25, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
   
-  .shadow-soft {
-    box-shadow: 0 4px 24px -4px hsl(270 60% 55% / 0.15);
+  .glass-card {
+    background: linear-gradient(135deg, rgba(20, 20, 35, 0.8) 0%, rgba(15, 15, 25, 0.9) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
   }
   
-  .shadow-hover {
-    box-shadow: 0 8px 32px -4px hsl(270 60% 55% / 0.25);
+  .shadow-glow {
+    box-shadow: 
+      0 0 20px -5px hsl(175 85% 50% / 0.3),
+      0 10px 40px -10px hsl(280 80% 60% / 0.2);
+  }
+  
+  .shadow-glow-hover {
+    box-shadow: 
+      0 0 30px -5px hsl(175 85% 50% / 0.5),
+      0 15px 50px -10px hsl(280 80% 60% / 0.3),
+      0 0 60px -10px hsl(320 85% 60% / 0.2);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(175 85% 50%) 0%, hsl(280 80% 60%) 50%, hsl(320 85% 60%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .border-gradient {
+    border-image: linear-gradient(135deg, hsl(175 85% 50% / 0.5) 0%, hsl(280 80% 60% / 0.5) 50%, hsl(320 85% 60% / 0.5) 100%) 1;
+  }
+  
+  .bg-grid {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  .bg-radial-glow {
+    background: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(175 85% 50% / 0.15), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 0%, hsl(280 80% 60% / 0.1), transparent),
+                radial-gradient(ellipse 60% 40% at 20% 0%, hsl(320 85% 60% / 0.1), transparent);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+    background-size: 200% 100%;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px -5px hsl(175 85% 50% / 0.3);
+    }
+    50% { 
+      box-shadow: 0 0 40px -5px hsl(175 85% 50% / 0.5);
+    }
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
   }
 }
